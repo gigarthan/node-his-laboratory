@@ -3,18 +3,13 @@ const Schema = mongoose.Schema;
 
 
 const testCategoriesSchema = new Schema({
-
-    name:{
-
-        type:String,
-        required :true
+    name: {
+        type: String,
+        required: true
     },
-
-    subCategories:{
-
-        type :Array
+    subCategories: {
+        type: Array
     },
-
 });
 
-module.exports = mongoose.model('TestCategories',testCategoriesSchema);
+module.exports = mongoose.model('TestCategories', testCategoriesSchema);
