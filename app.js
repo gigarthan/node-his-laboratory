@@ -15,6 +15,11 @@ app.use(cors());
 app.use(express.json());
 app.use(passport.initialize());
 
+// Routes
+const testCategoryRouter = require('./src/routes/testCategoryRouter');
+
+app.use('/api/test-category', testCategoryRouter);
+
 app.listen(PORT, () => {
     console.log(`SERVER RUNNING ON PORT ${PORT}`);
 });
