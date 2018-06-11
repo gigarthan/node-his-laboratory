@@ -1,8 +1,10 @@
+//IT16139640
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-const labSchema = new Schema({
+const laboratorySchema = new Schema({
 
     name:{
         type:String,
@@ -10,11 +12,13 @@ const labSchema = new Schema({
     },
 
     labTypes:{
-        type:String
+        type:String,
+        required :true
     },
 
     department:{
-        type :String
+        type :String,
+        required :true
     },
 
     count:{
@@ -24,6 +28,7 @@ const labSchema = new Schema({
     labInCharge:{
         type : String
     },
+
     location:{
         type: String
     },
@@ -33,7 +38,8 @@ const labSchema = new Schema({
     },
 
     contact1:{
-        type:String
+        type:String,
+        required :true
     },
 
     contact2:{
@@ -42,4 +48,4 @@ const labSchema = new Schema({
 
 });
 
-module.exports = mongoose.model('Lab',labSchema);
+module.exports = mongoose.model('Laboratory',laboratorySchema);
