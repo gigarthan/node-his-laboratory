@@ -1,15 +1,17 @@
+//IT16139640
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-const testCategoriesSchema = new Schema({
+const testCategorySchema = new Schema({
+
     name: {
         type: String,
+        unique: true,
         required: true
-    },
-    subCategories: {
-        type: Array
-    },
+    }
+
 });
 
-module.exports = mongoose.model('TestCategories', testCategoriesSchema);
+module.exports = mongoose.model('TestCategory', testCategorySchema);
