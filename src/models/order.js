@@ -45,4 +45,5 @@ const orderSchema = new Schema({
     department: String
 });
 
+// EXPORT
 module.exports = mongoose.model('Order', orderSchema);
