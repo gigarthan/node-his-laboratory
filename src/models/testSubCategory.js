@@ -6,8 +6,6 @@ const Schema = mongoose.Schema;
 
 const testSubCategorySchema = new Schema({
 
-
-
     name:{
         type:String,
         unique: true,
@@ -15,6 +13,8 @@ const testSubCategorySchema = new Schema({
     },
 
 
+
 });
+
 
 module.exports = mongoose.model('TestSubCategory',testSubCategorySchema);
