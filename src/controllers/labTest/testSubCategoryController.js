@@ -1,7 +1,7 @@
 //IT16139640
 'use strict';
 
-const testSubCategorySchema = require('../models/testSubCategory');
+const testSubCategorySchema = require('../../models/labTest/testSubCategory');
 
 
 

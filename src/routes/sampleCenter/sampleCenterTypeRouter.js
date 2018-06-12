@@ -3,16 +3,16 @@
 const express = require('express');
 const router = express.Router();
 
-const testCategoryController = require('../controllers/testCategoryController');
+const sampleCenterTypeController = require('../../controllers/sampleCenter/sampleCenterTypeController');
 
 
 
-//Get lab categories
+//Get sample center types
 
 
 
 router.get('/',  (req, res)=> {
-    testCategoryController.getAllTestCategory().then(data=> {
+    sampleCenterTypeController.getAllSampleCenterTypes().then(data=> {
         res.status(data.status).send(data.data);
     }).catch(err=> {
         res.status(err.status).send(err.message);
@@ -21,12 +21,12 @@ router.get('/',  (req, res)=> {
 
 
 
-//Get single test category
+//Get single sample center type
 
 
 
 router.get('/:name', (req, res) =>{
-    testCategoryController.getSingleTestCategory(req.params.name).then(data => {
+    sampleCenterTypeController.getSingleSampleCenterType(req.params.name).then(data => {
         res.status(data.status).send(data.data);
     }).catch(err =>{
         res.status(err.status).send(err.message);
@@ -35,12 +35,12 @@ router.get('/:name', (req, res) =>{
 
 
 
-//Add new test category
+//Add new sample center type
 
 
 
 router.post('/', (req, res) =>{
-    testCategoryController.addTestCategory(req.body).then(data => {
+    sampleCenterTypeController.addSampleCenterType(req.body).then(data => {
         res.status(data.status).send(data.message);
     }).catch(function (err) {
         res.status(err.status).send(err.message);
@@ -49,12 +49,12 @@ router.post('/', (req, res) =>{
 
 
 
-//delete test category
+//delete sample center type
 
 
 
 router.delete('/:name', (req, res) =>{
-    testCategoryController.deleteTestCategory(req.params.name).then(data =>{
+    sampleCenterTypeController.deleteSampleCenterType(req.params.name).then(data =>{
         res.status(data.status).send(data.response);
     }).catch(err =>{
         res.status(err.status).send(err.message);
@@ -63,12 +63,12 @@ router.delete('/:name', (req, res) =>{
 
 
 
-//update test category
+//update sample center type
 
 
 
 router.put('/:name', (req, res)=> {
-    testCategoryController.updateTestCategory(req.params.name, req.body).then(data => {
+    sampleCenterTypeController.updateSampleCenterType(req.params.name, req.body).then(data => {
         res.status(data.status).send(data.message);
     }).catch(err => {
         res.status(err.status).send(err.message);

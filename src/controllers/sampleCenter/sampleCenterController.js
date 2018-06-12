@@ -1,28 +1,35 @@
 //IT16139640
 
 
-const labTypeSchema = require('../models/labType');
+const sampleCenterSchema = require('../../models/sampleCenter/sampleCenter');
 
 
 
-const labTypeController = function () {
+const sampleCenterController = function () {
 
 
-    //Add new lab type
+//////Add new sample center
 
 
-    this.addLabType = function (labTypeInstance) {
+    this.addSampleCenter = function (sampleCenterInstance) {
         return new Promise((resolve, reject) => {
 
-            const labType = new labTypeSchema({
-                name: labTypeInstance.name
+            const sampleCenter = new sampleCenterSchema({
+
+                name: sampleCenterInstance.name,
+                type :sampleCenterInstance.type,
+                InCharge: sampleCenterInstance.InCharge,
+                location: sampleCenterInstance.location,
+                email : sampleCenterInstance.email,
+                contact1 :sampleCenterInstance.contact1,
+                contact2: sampleCenterInstance.contact2
             });
 
-            labType.save().then(() => {
+            sampleCenter.save().then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'New lab type added '
+                    message: 'New sample center added '
                 });
             }).catch(err => {
                 reject({
@@ -36,16 +43,17 @@ const labTypeController = function () {
 
 
 
-    //Get all lab types
+
+//////Get all sample centers
 
 
 
-    this.getAllLabTypes = function () {
+    this.getAllSampleCenters = function () {
         return new Promise((resolve, reject) => {
-            labTypeSchema.find().exec().then(data => {
+            sampleCenterSchema.find().exec().then(data => {
                 resolve({
                     status: 200,
-                    message: 'Get lab types',
+                    message: 'Get sample centers',
                     data: data
                 });
             }).catch(err => {
@@ -61,19 +69,20 @@ const labTypeController = function () {
 
 
 
-//Get a specific lab type
+//////Get a specific sample center
 
+// By name
 
-    this.getSingleLabType = function (name) {
+    this.getSingleSampleCenter = function (name) {
         return new Promise((resolve, reject) => {
 
-            labTypeSchema.find({
+            sampleCenterSchema.find({
                 name: name
             }).exec().then(data => {
 
                 resolve({
                     status: 200,
-                    message: 'Get a specific lab type',
+                    message: 'Get a specific sample center',
                     data: data
                 });
             }).catch(err => {
@@ -91,20 +100,20 @@ const labTypeController = function () {
 
 
 
-//Update a lab type
+//////Update a sample center
 
+//by name
 
-
-    this.updateLabType = function (name, newData) {
+    this.updateSampleCenter= function (name, data) {
         return new Promise((resolve, reject) => {
 
-            labTypeSchema.update({
+            sampleCenterSchema.update({
                 name: name
-            }, newData).then(() => {
+            }, data).then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'Update lab type'
+                    message: 'Update sample center by name'
                 });
             }).catch(err => {
                 reject({
@@ -120,19 +129,21 @@ const labTypeController = function () {
 
 
 
-//delete lab type
+//////delete sample center
 
 
+//by name
 
-    this.deleteLabType = function (name) {
+
+    this.deleteSampleCenter = function (name) {
 
         return new Promise((resolve, reject) => {
-            labTypeSchema.remove({
+            sampleCenterSchema.remove({
                 name: name
             }).then(() => {
                 resolve({
                     status: 200,
-                    message: 'Delete lab type'
+                    message: 'Delete sample center by name'
                 });
             }).catch(err => {
                 reject({
@@ -147,6 +158,6 @@ const labTypeController = function () {
 };
 
 
-module.exports = new labTypeController();
+module.exports = new sampleCenterController();
 
 

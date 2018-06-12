@@ -3,16 +3,16 @@
 const express = require('express');
 const router = express.Router();
 
-const testSubCategoryController = require('../controllers/testSubCategoryController');
+const labTypeController = require('../../controllers/laboratory/labTypeController');
 
 
 
-//Get test sub categories
+//Get lab types
 
 
 
 router.get('/',  (req, res)=> {
-    testSubCategoryController.getAllTestSubCategory().then(data=> {
+    labTypeController.getAllLabTypes().then(data=> {
         res.status(data.status).send(data.data);
     }).catch(err=> {
         res.status(err.status).send(err.message);
@@ -21,12 +21,12 @@ router.get('/',  (req, res)=> {
 
 
 
-//Get single test sub category
+//Get single lab type
 
 
 
 router.get('/:name', (req, res) =>{
-    testSubCategoryController.getSingleTestSubCategory(req.params.name).then(data => {
+    labTypeController.getSingleLabType(req.params.name).then(data => {
         res.status(data.status).send(data.data);
     }).catch(err =>{
         res.status(err.status).send(err.message);
@@ -35,12 +35,12 @@ router.get('/:name', (req, res) =>{
 
 
 
-//Add new test sub category
+//Add new lab type
 
 
 
 router.post('/', (req, res) =>{
-    testSubCategoryController.addTestSubCategory(req.body).then(data => {
+    labTypeController.addLabType(req.body).then(data => {
         res.status(data.status).send(data.message);
     }).catch(function (err) {
         res.status(err.status).send(err.message);
@@ -49,12 +49,12 @@ router.post('/', (req, res) =>{
 
 
 
-//delete test category
+//delete lab type
 
 
 
 router.delete('/:name', (req, res) =>{
-    testSubCategoryController.deleteTestSubCategory(req.params.name).then(data =>{
+    labTypeController.deleteLabType(req.params.name).then(data =>{
         res.status(data.status).send(data.response);
     }).catch(err =>{
         res.status(err.status).send(err.message);
@@ -63,12 +63,12 @@ router.delete('/:name', (req, res) =>{
 
 
 
-//update test category
+//update lab type
 
 
 
 router.put('/:name', (req, res)=> {
-    testSubCategoryController.updateTestSubCategory(req.params.name, req.body).then(data => {
+    labTypeController.updateLabType(req.params.name, req.body).then(data => {
         res.status(data.status).send(data.message);
     }).catch(err => {
         res.status(err.status).send(err.message);

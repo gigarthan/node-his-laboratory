@@ -1,8 +1,8 @@
 //IT16139640
 'use strict';
 
-const mongoose = require('../config/database');
-const testCategorySchema = require('../models/testCategory');
+const mongoose = require('../../config/database');
+const testCategorySchema = require('../../models/labTest/testCategory');
 
 
 
@@ -56,7 +56,7 @@ const testCategoryController = function () {
                 });
             });
         })
-    }
+    };
 
 
 

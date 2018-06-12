@@ -3,16 +3,16 @@
 const express = require('express');
 const router = express.Router();
 
-const labDepartmentController = require('../controllers/labDepartmentController');
+const testSubCategoryController = require('../../controllers/labTest/testSubCategoryController');
 
 
 
-//Get lab departments
+//Get test sub categories
 
 
 
 router.get('/',  (req, res)=> {
-    labDepartmentController.getAllLabDepartments().then(data=> {
+    testSubCategoryController.getAllTestSubCategory().then(data=> {
         res.status(data.status).send(data.data);
     }).catch(err=> {
         res.status(err.status).send(err.message);
@@ -21,12 +21,12 @@ router.get('/',  (req, res)=> {
 
 
 
-//Get single test category
+//Get single test sub category
 
 
 
 router.get('/:name', (req, res) =>{
-    labDepartmentController.getSingleLabDepartment(req.params.name).then(data => {
+    testSubCategoryController.getSingleTestSubCategory(req.params.name).then(data => {
         res.status(data.status).send(data.data);
     }).catch(err =>{
         res.status(err.status).send(err.message);
@@ -35,12 +35,12 @@ router.get('/:name', (req, res) =>{
 
 
 
-//Add new test category
+//Add new test sub category
 
 
 
 router.post('/', (req, res) =>{
-    labDepartmentController.addLabDepartment(req.body).then(data => {
+    testSubCategoryController.addTestSubCategory(req.body).then(data => {
         res.status(data.status).send(data.message);
     }).catch(function (err) {
         res.status(err.status).send(err.message);
@@ -54,7 +54,7 @@ router.post('/', (req, res) =>{
 
 
 router.delete('/:name', (req, res) =>{
-    labDepartmentController.deleteLabDepartment(req.params.name).then(data =>{
+    testSubCategoryController.deleteTestSubCategory(req.params.name).then(data =>{
         res.status(data.status).send(data.response);
     }).catch(err =>{
         res.status(err.status).send(err.message);
@@ -68,7 +68,7 @@ router.delete('/:name', (req, res) =>{
 
 
 router.put('/:name', (req, res)=> {
-    labDepartmentController.updateLabDepartment(req.params.name, req.body).then(data => {
+    testSubCategoryController.updateTestSubCategory(req.params.name, req.body).then(data => {
         res.status(data.status).send(data.message);
     }).catch(err => {
         res.status(err.status).send(err.message);

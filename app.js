@@ -34,7 +34,7 @@ app.use(passport.initialize());
 
 //Routes for test category
 
-const testCategoryRouter = require('./src/routes/testCategoryRouter');
+const testCategoryRouter = require('./src/routes/labTest/testCategoryRouter');
 
 app.use('/api/test-category', testCategoryRouter);
 
@@ -42,7 +42,7 @@ app.use('/api/test-category', testCategoryRouter);
 
 //Routes for test sub category
 
-const subCategoryRouter  = require('./src/routes/testSubCategoryRouter');
+const subCategoryRouter  = require('./src/routes/labTest/testSubCategoryRouter');
 
 app.use('/api/test-subcategory',subCategoryRouter);
 
@@ -57,7 +57,7 @@ app.use('/api/test-subcategory',subCategoryRouter);
 
 //Routes for lab departments
 
-const labDepartmentRouter  = require('./src/routes/labDepartmentRouter');
+const labDepartmentRouter  = require('./src/routes/laboratory/labDepartmentRouter');
 
 app.use('/api/lab-department',labDepartmentRouter);
 
@@ -65,7 +65,7 @@ app.use('/api/lab-department',labDepartmentRouter);
 
 //Routes for lab types
 
-const labTypeRouter  = require('./src/routes/labTypeRouter');
+const labTypeRouter  = require('./src/routes/laboratory/labTypeRouter');
 
 app.use('/api/lab-type',labTypeRouter);
 
@@ -73,7 +73,7 @@ app.use('/api/lab-type',labTypeRouter);
 
 //Routes for laboratory
 
-const laboratoryRouter  = require('./src/routes/laboratoryRoute');
+const laboratoryRouter  = require('./src/routes/laboratory/laboratoryRoute');
 
 app.use('/api/laboratory',laboratoryRouter);
 
@@ -89,7 +89,7 @@ app.use('/api/laboratory',laboratoryRouter);
 
 //Routes for sample center types
 
-const sampleCenterTypeRouter  = require('./src/routes/sampleCenterTypeRouter');
+const sampleCenterTypeRouter  = require('./src/routes/sampleCenter/sampleCenterTypeRouter');
 
 app.use('/api/sample-center-type',sampleCenterTypeRouter);
 
@@ -98,7 +98,7 @@ app.use('/api/sample-center-type',sampleCenterTypeRouter);
 //Routes for sample center
 
 
-const sampleCenterRouter  = require('./src/routes/sampleCenterRouter');
+const sampleCenterRouter  = require('./src/routes/sampleCenter/sampleCenterRouter');
 
 app.use('/api/sample-center',sampleCenterRouter);
 

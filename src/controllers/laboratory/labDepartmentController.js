@@ -1,35 +1,28 @@
 //IT16139640
+'use strict';
+
+const labDepartmentSchema = require('../../models/laboratory/labDepartment');
 
 
-const sampleCenterSchema = require('../models/sampleCenter');
+
+const labDepartmentController = function () {
 
 
-
-const sampleCenterController = function () {
-
-
-//////Add new sample center
+    //Add new test sub category
 
 
-    this.addSampleCenter = function (sampleCenterInstance) {
+    this.addLabDepartment = function (labDepartmentInstance) {
         return new Promise((resolve, reject) => {
 
-            const sampleCenter = new sampleCenterSchema({
-
-                name: sampleCenterInstance.name,
-                type :sampleCenterInstance.type,
-                InCharge: sampleCenterInstance.InCharge,
-                location: sampleCenterInstance.location,
-                email : sampleCenterInstance.email,
-                contact1 :sampleCenterInstance.contact1,
-                contact2: sampleCenterInstance.contact2
+            const labDepartment = new labDepartmentSchema({
+                name: labDepartmentInstance.name
             });
 
-            sampleCenter.save().then(() => {
+            labDepartment.save().then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'New sample center added '
+                    message: 'New lab department added '
                 });
             }).catch(err => {
                 reject({
@@ -43,17 +36,16 @@ const sampleCenterController = function () {
 
 
 
-
-//////Get all sample centers
-
+    //Get all lab departments
 
 
-    this.getAllSampleCenters = function () {
+
+    this.getAllLabDepartments = function () {
         return new Promise((resolve, reject) => {
-            sampleCenterSchema.find().exec().then(data => {
+            labDepartmentSchema.find().exec().then(data => {
                 resolve({
                     status: 200,
-                    message: 'Get sample centers',
+                    message: 'Get lab departments',
                     data: data
                 });
             }).catch(err => {
@@ -69,20 +61,19 @@ const sampleCenterController = function () {
 
 
 
-//////Get a specific sample center
+//Get a specific lab department
 
-// By name
 
-    this.getSingleSampleCenter = function (name) {
+    this.getSingleLabDepartment = function (name) {
         return new Promise((resolve, reject) => {
 
-            sampleCenterSchema.find({
+            labDepartmentSchema.find({
                 name: name
             }).exec().then(data => {
 
                 resolve({
                     status: 200,
-                    message: 'Get a specific sample center',
+                    message: 'Get a specific test sub category',
                     data: data
                 });
             }).catch(err => {
@@ -100,20 +91,20 @@ const sampleCenterController = function () {
 
 
 
-//////Update a sample center
+//Update a lab department
 
-//by name
 
-    this.updateSampleCenter= function (name, data) {
+
+    this.updateLabDepartment = function (name, newData) {
         return new Promise((resolve, reject) => {
 
-            sampleCenterSchema.update({
+            labDepartmentSchema.update({
                 name: name
-            }, data).then(() => {
+            }, newData).then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'Update sample center by name'
+                    message: 'Update lab department'
                 });
             }).catch(err => {
                 reject({
@@ -128,22 +119,19 @@ const sampleCenterController = function () {
 
 
 
-
-//////delete sample center
-
-
-//by name
+//delete lab department
 
 
-    this.deleteSampleCenter = function (name) {
+
+    this.deleteLabDepartment = function (name) {
 
         return new Promise((resolve, reject) => {
-            sampleCenterSchema.remove({
+            labDepartmentSchema.remove({
                 name: name
             }).then(() => {
                 resolve({
                     status: 200,
-                    message: 'Delete sample center by name'
+                    message: 'Delete lab department'
                 });
             }).catch(err => {
                 reject({
@@ -158,6 +146,4 @@ const sampleCenterController = function () {
 };
 
 
-module.exports = new sampleCenterController();
-
-
+module.exports = new labDepartmentController();

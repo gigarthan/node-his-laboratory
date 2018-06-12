@@ -1,28 +1,27 @@
 //IT16139640
-'use strict';
 
-const labDepartmentSchema = require('../models/labDepartment');
-
+const sampleCenterTypeSchema = require('../../models/sampleCenter/sampleCenterType');
 
 
-const labDepartmentController = function () {
+
+const sampleCenterTypeController = function () {
 
 
-    //Add new test sub category
+    //Add new sample center type
 
 
-    this.addLabDepartment = function (labDepartmentInstance) {
+    this.addSampleCenterType = function (sampleCenterTypeInstance) {
         return new Promise((resolve, reject) => {
 
-            const labDepartment = new labDepartmentSchema({
-                name: labDepartmentInstance.name
+            const sampleCenterType = new sampleCenterTypeSchema({
+                name: sampleCenterTypeInstance.name
             });
 
-            labDepartment.save().then(() => {
+            sampleCenterType.save().then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'New lab department added '
+                    message: 'New sample center type added '
                 });
             }).catch(err => {
                 reject({
@@ -36,16 +35,16 @@ const labDepartmentController = function () {
 
 
 
-    //Get all lab departments
+    //Get all sample center types
 
 
 
-    this.getAllLabDepartments = function () {
+    this.getAllSampleCenterTypes = function () {
         return new Promise((resolve, reject) => {
-            labDepartmentSchema.find().exec().then(data => {
+            sampleCenterTypeSchema.find().exec().then(data => {
                 resolve({
                     status: 200,
-                    message: 'Get lab departments',
+                    message: 'Get sample center types',
                     data: data
                 });
             }).catch(err => {
@@ -61,19 +60,19 @@ const labDepartmentController = function () {
 
 
 
-//Get a specific lab department
+//Get a specific sample center type
 
 
-    this.getSingleLabDepartment = function (name) {
+    this.getSingleSampleCenterType = function (name) {
         return new Promise((resolve, reject) => {
 
-            labDepartmentSchema.find({
+            sampleCenterTypeSchema.find({
                 name: name
             }).exec().then(data => {
 
                 resolve({
                     status: 200,
-                    message: 'Get a specific test sub category',
+                    message: 'Get a specific sample center type',
                     data: data
                 });
             }).catch(err => {
@@ -91,20 +90,20 @@ const labDepartmentController = function () {
 
 
 
-//Update a lab department
+//Update a sample center type
 
 
 
-    this.updateLabDepartment = function (name, newData) {
+    this.updateSampleCenterType = function (name, newData) {
         return new Promise((resolve, reject) => {
 
-            labDepartmentSchema.update({
+            sampleCenterTypeSchema.update({
                 name: name
             }, newData).then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'Update lab department'
+                    message: 'Update sample center type'
                 });
             }).catch(err => {
                 reject({
@@ -119,19 +118,20 @@ const labDepartmentController = function () {
 
 
 
-//delete lab department
+
+//delete sample center type
 
 
 
-    this.deleteLabDepartment = function (name) {
+    this.deleteSampleCenterType = function (name) {
 
         return new Promise((resolve, reject) => {
-            labDepartmentSchema.remove({
+            sampleCenterTypeSchema.remove({
                 name: name
             }).then(() => {
                 resolve({
                     status: 200,
-                    message: 'Delete lab department'
+                    message: 'Delete sample center type'
                 });
             }).catch(err => {
                 reject({
@@ -146,4 +146,6 @@ const labDepartmentController = function () {
 };
 
 
-module.exports = new labDepartmentController();
+module.exports = new sampleCenterTypeController();
+
+

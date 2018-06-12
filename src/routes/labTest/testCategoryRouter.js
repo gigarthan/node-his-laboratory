@@ -3,16 +3,16 @@
 const express = require('express');
 const router = express.Router();
 
-const labTypeController = require('../controllers/labTypeController');
+const testCategoryController = require('../../controllers/labTest/testCategoryController');
 
 
 
-//Get lab types
+//Get lab categories
 
 
 
 router.get('/',  (req, res)=> {
-    labTypeController.getAllLabTypes().then(data=> {
+    testCategoryController.getAllTestCategory().then(data=> {
         res.status(data.status).send(data.data);
     }).catch(err=> {
         res.status(err.status).send(err.message);
@@ -21,12 +21,12 @@ router.get('/',  (req, res)=> {
 
 
 
-//Get single lab type
+//Get single test category
 
 
 
 router.get('/:name', (req, res) =>{
-    labTypeController.getSingleLabType(req.params.name).then(data => {
+    testCategoryController.getSingleTestCategory(req.params.name).then(data => {
         res.status(data.status).send(data.data);
     }).catch(err =>{
         res.status(err.status).send(err.message);
@@ -35,12 +35,12 @@ router.get('/:name', (req, res) =>{
 
 
 
-//Add new lab type
+//Add new test category
 
 
 
 router.post('/', (req, res) =>{
-    labTypeController.addLabType(req.body).then(data => {
+    testCategoryController.addTestCategory(req.body).then(data => {
         res.status(data.status).send(data.message);
     }).catch(function (err) {
         res.status(err.status).send(err.message);
@@ -49,12 +49,12 @@ router.post('/', (req, res) =>{
 
 
 
-//delete lab type
+//delete test category
 
 
 
 router.delete('/:name', (req, res) =>{
-    labTypeController.deleteLabType(req.params.name).then(data =>{
+    testCategoryController.deleteTestCategory(req.params.name).then(data =>{
         res.status(data.status).send(data.response);
     }).catch(err =>{
         res.status(err.status).send(err.message);
@@ -63,12 +63,12 @@ router.delete('/:name', (req, res) =>{
 
 
 
-//update lab type
+//update test category
 
 
 
 router.put('/:name', (req, res)=> {
-    labTypeController.updateLabType(req.params.name, req.body).then(data => {
+    testCategoryController.updateTestCategory(req.params.name, req.body).then(data => {
         res.status(data.status).send(data.message);
     }).catch(err => {
         res.status(err.status).send(err.message);

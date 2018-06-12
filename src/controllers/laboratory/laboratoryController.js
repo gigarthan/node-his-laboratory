@@ -1,27 +1,37 @@
 //IT16139640
 
-const sampleCenterTypeSchema = require('../models/sampleCenterType');
+
+const laboratorySchema = require('../../models/laboratory/laboratory');
 
 
 
-const sampleCenterTypeController = function () {
+const laboratoryController = function () {
 
 
-    //Add new sample center type
+//////Add new laboratory
 
 
-    this.addSampleCenterType = function (sampleCenterTypeInstance) {
+    this.addLaboratory = function (laboratoryInstance) {
         return new Promise((resolve, reject) => {
 
-            const sampleCenterType = new sampleCenterTypeSchema({
-                name: sampleCenterTypeInstance.name
+            const laboratory = new laboratorySchema({
+
+                name: laboratoryInstance.name,
+                 labTypes :laboratoryInstance.labTypes,
+                 department :laboratoryInstance.department,
+                count : laboratoryInstance.count,
+                labInCharge: laboratoryInstance.labInCharge,
+                location: laboratoryInstance.location,
+                email : laboratoryInstance.email,
+                contact1 :laboratoryInstance.contact1,
+                contact2: laboratoryInstance.contact2
             });
 
-            sampleCenterType.save().then(() => {
+            laboratory.save().then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'New sample center type added '
+                    message: 'New laboratory added '
                 });
             }).catch(err => {
                 reject({
@@ -35,16 +45,16 @@ const sampleCenterTypeController = function () {
 
 
 
-    //Get all sample center types
+//////Get all laboratories
 
 
 
-    this.getAllSampleCenterTypes = function () {
+    this.getAllLaboratories = function () {
         return new Promise((resolve, reject) => {
-            sampleCenterTypeSchema.find().exec().then(data => {
+            laboratorySchema.find().exec().then(data => {
                 resolve({
                     status: 200,
-                    message: 'Get sample center types',
+                    message: 'Get laboratories',
                     data: data
                 });
             }).catch(err => {
@@ -60,19 +70,20 @@ const sampleCenterTypeController = function () {
 
 
 
-//Get a specific sample center type
+//////Get a specific laboratory
 
+// By name
 
-    this.getSingleSampleCenterType = function (name) {
+    this.getSingleLaboratory = function (name) {
         return new Promise((resolve, reject) => {
 
-            sampleCenterTypeSchema.find({
+            laboratorySchema.find({
                 name: name
             }).exec().then(data => {
 
                 resolve({
                     status: 200,
-                    message: 'Get a specific sample center type',
+                    message: 'Get a specific laboratory',
                     data: data
                 });
             }).catch(err => {
@@ -90,20 +101,20 @@ const sampleCenterTypeController = function () {
 
 
 
-//Update a sample center type
+//////Update a laboratory
 
+//by name
 
-
-    this.updateSampleCenterType = function (name, newData) {
+    this.updateLaboratory= function (name, data) {
         return new Promise((resolve, reject) => {
 
-            sampleCenterTypeSchema.update({
+            laboratorySchema.update({
                 name: name
-            }, newData).then(() => {
+            }, data).then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'Update sample center type'
+                    message: 'Update laboratory by name'
                 });
             }).catch(err => {
                 reject({
@@ -119,19 +130,21 @@ const sampleCenterTypeController = function () {
 
 
 
-//delete sample center type
+//////delete laboratory
 
 
+//by name
 
-    this.deleteSampleCenterType = function (name) {
+
+    this.deleteLaboratory = function (name) {
 
         return new Promise((resolve, reject) => {
-            sampleCenterTypeSchema.remove({
+            laboratorySchema.remove({
                 name: name
             }).then(() => {
                 resolve({
                     status: 200,
-                    message: 'Delete sample center type'
+                    message: 'Delete laboratory by name'
                 });
             }).catch(err => {
                 reject({
@@ -146,6 +159,6 @@ const sampleCenterTypeController = function () {
 };
 
 
-module.exports = new sampleCenterTypeController();
+module.exports = new laboratoryController();
 
 
