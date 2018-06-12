@@ -5,11 +5,11 @@ const orderSchema = new Schema({
 
     //the auto generated id value will be the reqID
     reqId:{
-        type:Number,
-        required:true
+        type:String,
+        //required:true
     },
     patientHIN: {
-        type: Number,
+        type: String,
         required: true
     },
     fullName: {
@@ -70,9 +70,18 @@ const orderSchema = new Schema({
         type: String,
         required: true
     },
-    specimenType: String,
-    retentionType: String,
-    collectedDate: String,
+    specimenType:{
+        type: String,
+        //required: true
+    },
+    retentionType: {
+        type: String,
+        //required: true
+    },
+    collectedDate:{
+        type: Date,
+        //required: true
+    },
     remarks : String
 
 
