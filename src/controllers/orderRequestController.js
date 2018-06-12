@@ -34,7 +34,7 @@ var orderController = function () {
     this.viewAllOrderRequsts = function(){
         return new Promise ((resolve,reject) => {
             orderSchema.find().exec().then(data => {
-                resolve({'status':201, 'message':data});
+                resolve({'status':200, 'message':data});
         }).catch(err => {
                 reject({'status':404, 'message':err});
         })
@@ -44,8 +44,8 @@ var orderController = function () {
 
     this.viewOrderByReqId = function(reqId){
         return new Promise ((resolve,reject) => {
-            orderSchema.find({reqId:reqId}).exec().then(data => {
-            resolve({'status':201, 'message':data});
+            orderSchema.find({_id:reqId}).exec().then(data => {
+            resolve({'status':200, 'message':data});
         }).catch(err => {
             reject({'status':404, 'message':err});
         })
@@ -56,16 +56,12 @@ var orderController = function () {
     this.viewOrderByPatientHIN = function(patientHIN){
         return new Promise ((resolve,reject) => {
             orderSchema.find({patientHIN:patientHIN}).exec().then(data => {
-            resolve({'status':201, 'message':data});
+            resolve({'status':200, 'message':data});
         }).catch(err => {
             reject({'status':404, 'message':err});
         })
         })
     }
-
-
-
-
 
 }
 
