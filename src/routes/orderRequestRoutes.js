@@ -27,6 +27,8 @@ Route.get('/requestView/:reqId', (req,res) => {
 })
 });
 
+
+////////////// NEED TO RE-CHECK AGAIN/////////////////////////////
 Route.get('/requestView/:patientHIN', (req,res) => {
     controller.viewOrderByPatientHIN(req.params.patientHIN).then(response => {
     res.status(response.status).send(response.message);
@@ -34,7 +36,7 @@ Route.get('/requestView/:patientHIN', (req,res) => {
     res.status(err.status).send(err.message);
 })
 });
-
+///////////////////////////////////////////////////////////////////
 
 
 module.exports = Route;
