@@ -5,7 +5,7 @@ var orderController = function () {
 
     this.createNewOrder = function(orderData){
         return new Promise((resolve,reject) => {
-            var orderRequest = new orderSchema({
+            var request = new orderSchema({
                 reqId:orderData.reqId,
                 patientHIN:orderData.patientHIN,
                 fullName:orderData.fullName,
@@ -20,9 +20,9 @@ var orderController = function () {
                 department:orderData.department,
                 category:orderData.category,
                 subCategory:orderData.subCategory,
-                testName:orderData.testName,
+                testName:orderData.testName
             })
-            orderRequest.save().then(() => {
+            request.save().then(() => {
                 resolve({'status':201, 'message':'New Order Request Created!'});
         }).catch(err => {
                 reject({'status':500, 'message':err});
