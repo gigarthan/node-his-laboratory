@@ -1,12 +1,12 @@
 //IT16139640
 'use strict';
 
-const mongoose  = require('../config/database');
+const mongoose = require('../config/database');
 const testCategorySchema = require('../models/testCategory');
 
 
 
-const  testCategoryController = function() {
+const testCategoryController = function () {
 
 
     //Add new test category
@@ -21,9 +21,15 @@ const  testCategoryController = function() {
 
             testCategory.save().then(() => {
 
-                resolve({status: 200, message: 'New Test Category added '});
+                resolve({
+                    status: 200,
+                    message: 'New Test Category added '
+                });
             }).catch(err => {
-                reject({status: 404, message: err});
+                reject({
+                    status: 404,
+                    message: err
+                });
             })
 
         })
@@ -38,36 +44,51 @@ const  testCategoryController = function() {
     this.getAllTestCategory = function () {
         return new Promise((resolve, reject) => {
             testCategorySchema.find().exec().then(data => {
-                resolve({status: 200,message:'Get test categories', data: data});
-            }).catch(err =>{
-                reject({status: 404, message: err});
+                resolve({
+                    status: 200,
+                    message: 'Get test categories',
+                    data: data
+                });
+            }).catch(err => {
+                reject({
+                    status: 404,
+                    message: err
+                });
             });
         })
     }
 
-};
 
 
 
-    //Get a specific test category
+
+//Get a specific test category
 
 
 
-    this.getSingleTestCategory = function(name) {
-        return new Promise((resolve, reject) =>{
+this.getSingleTestCategory = function (name) {
+    return new Promise((resolve, reject) => {
 
-            testCategorySchema.find({name:name}).exec().then(data => {
+        testCategorySchema.find({
+            name: name
+        }).exec().then(data => {
 
-                resolve({status: 200, message:'Get a specific test category', data: data});
-            }).catch(err =>
-             {
-                reject({status: 404,message:err});
-            })
-
+            resolve({
+                status: 200,
+                message: 'Get a specific test category',
+                data: data
+            });
+        }).catch(err => {
+            reject({
+                status: 404,
+                message: err
+            });
         })
 
+    })
 
-    };
+
+};
 
 
 
@@ -76,37 +97,51 @@ const  testCategoryController = function() {
 
 
 
-    this.updateTestCategory = function (name, newData) {
-        return new Promise((resolve, reject) => {
+this.updateTestCategory = function (name, newData) {
+    return new Promise((resolve, reject) => {
 
-            testCategorySchema.update({name:name},newData).then(() => {
+        testCategorySchema.update({
+            name: name
+        }, newData).then(() => {
 
-                resolve({status: 200, message:'Update test category'});
-            }).catch(err => {
-                reject({status: 404, message:err});
-            })
-
+            resolve({
+                status: 200,
+                message: 'Update test category'
+            });
+        }).catch(err => {
+            reject({
+                status: 404,
+                message: err
+            });
         })
 
-    };
+    })
 
+};
 
+};
 
 //delete test category
 
 
 
-    this.deleteTestCategory = function (name) {
+this.deleteTestCategory = function (name) {
 
-        return new Promise((resolve, reject) =>{
-            testCategorySchema.remove({name: name}).then(() => {
-                resolve({status: 200, message:'Delete test category'});
-            }).catch(err => {
-                reject({status: 404, message:err});
-            })
-
-        })
-
+    return new Promise((resolve, reject) => {
+        testCategorySchema.remove({
+            name: name
+        }).then(() => {
+            resolve({
+                status: 200,
+                message: 'Delete test category'
+            });
+        }).catch(err => {
+            reject({
+                status: 404,
+                message: err
+            });
+        });
+    });
 };
 
 
