@@ -38,5 +38,13 @@ Route.get('/requestView/:patientHIN', (req,res) => {
 });
 ///////////////////////////////////////////////////////////////////
 
+Route.delete('/requestView/:reqId' , (req,res) =>{
+    controller.delete(req.params.id).then( response => {
+        res.status(response.status).send(response.message);
+}).catch(err => {
+        res.status(err.status).send(err.message);
+})
+});
+
 
 module.exports = Route;
