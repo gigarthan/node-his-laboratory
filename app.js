@@ -5,6 +5,7 @@ const config = require('./src/config/database');
 const passport = require('passport');
 const cors = require('cors');
 
+
 require('./src/config/passport')(passport);
 
 const  Routes = require('./Routes');
@@ -22,10 +23,89 @@ app.use(cors());
 app.use(express.json());
 app.use(passport.initialize());
 
-// Routes
+
+
+
+///////////////////////////////////////  Routes  /////////////////////////////////////////////
+
+
+//////////////  Lab test manager ////////////////////////////////////
+
+
+//Routes for test category
+
 const testCategoryRouter = require('./src/routes/testCategoryRouter');
 
 app.use('/api/test-category', testCategoryRouter);
+
+
+
+//Routes for test sub category
+
+const subCategoryRouter  = require('./src/routes/testSubCategoryRouter');
+
+app.use('/api/test-subcategory',subCategoryRouter);
+
+
+/////////////////////////////////////////////////////////////////////////
+
+
+
+///////////// Laboratory manager ///////////////////////////////////////
+
+
+
+//Routes for lab departments
+
+const labDepartmentRouter  = require('./src/routes/labDepartmentRouter');
+
+app.use('/api/lab-department',labDepartmentRouter);
+
+
+
+//Routes for lab types
+
+const labTypeRouter  = require('./src/routes/labTypeRouter');
+
+app.use('/api/lab-type',labTypeRouter);
+
+
+
+//Routes for laboratory
+
+const laboratoryRouter  = require('./src/routes/laboratoryRoute');
+
+app.use('/api/laboratory',laboratoryRouter);
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+////////////////////////// Sample Center manager /////////////////////////////
+
+
+
+//Routes for sample center types
+
+const sampleCenterTypeRouter  = require('./src/routes/sampleCenterTypeRouter');
+
+app.use('/api/sample-center-type',sampleCenterTypeRouter);
+
+
+
+//Routes for sample center
+
+
+const sampleCenterRouter  = require('./src/routes/sampleCenterRouter');
+
+app.use('/api/sample-center',sampleCenterRouter);
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+
 
 app.listen(PORT, () => {
     console.log(`SERVER RUNNING ON PORT ${PORT}`);
