@@ -69,10 +69,7 @@ const orderSchema = new Schema({
         required:true
     },
 
-
-
     // Test Details
-
     status: {
         type: String,
         enum: [
@@ -84,19 +81,14 @@ const orderSchema = new Schema({
     },
 
     // Specimen Details
-    specimenType:{
+    specimen: {
         type: String,
-        //required: true
-    },
-    retentionType: {
-        type: String,
-        //required: true
-    },
-    collectedDate:{
-        type: Date,
-        //required: true
-    },
-    remarks : String
+        retentionType: String,
+        collectedDate: Date,
+        location: String,
+        storedDate: Date,
+        remarks: String
+    }
 
 
 });
