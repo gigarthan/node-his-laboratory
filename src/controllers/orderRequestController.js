@@ -6,21 +6,26 @@ var orderController = function () {
     this.createNewOrder = function (orderData) {
         return new Promise((resolve, reject) => {
             var request = new orderSchema({
-                patientHIN: orderData.patientHIN,
-                fullName: orderData.fullName,
-                gender: orderData.gender,
-                dob: orderData.dob,
+                //Patient details
+                patientHIN:orderData.patientHIN,
+                fullName:orderData.fullName,
+                gender:orderData.gender,
+                dob:orderData.dob,
 
-                reqPerson: orderData.reqPerson,
-                departmentCategory: orderData.departmentCategory,
-                departmentSubCategory: orderData.departmentSubCategory,
+                //Request details
+                reqPerson:orderData.reqPerson,
+                department:orderData.department,
+                reqDate:orderData.reqDate,
+                dueDate:orderData.dueDate,
 
-                testName: orderData.testName,
-                priority: orderData.priority,
-                comment: orderData.comment,
+                //Test details
+                category:orderData.departmentCategory,
+                subCategory:orderData.departmentSubCategory,
+                testName:orderData.testName,
+                priority:orderData.priority,
+                comment:orderData.comment
 
-                reqDate: orderData.reqDate,
-                dueDate: orderData.dueDate
+
             })
             request.save().then(() => {
                 resolve({
@@ -90,7 +95,7 @@ var orderController = function () {
             })
         })
     }
-    ////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 
 
     this.delete = function (id) {
