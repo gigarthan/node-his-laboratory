@@ -6,21 +6,21 @@ var orderController = function () {
     this.createNewOrder = function(orderData){
         return new Promise((resolve,reject) => {
             var request = new orderSchema({
-                reqId:orderData.reqId,
                 patientHIN:orderData.patientHIN,
                 fullName:orderData.fullName,
                 gender:orderData.gender,
                 dob:orderData.dob,
-                status:orderData.status,
-                priority:orderData.priority,
-                reqDate:orderData.reqDate,
-                dueDate:orderData.dueDate,
+
                 reqPerson:orderData.reqPerson,
+                departmentCategory:orderData.departmentCategory,
+                departmentSubCategory:orderData.departmentSubCategory,
+
+                testName:orderData.testName,
+                priority:orderData.priority,
                 comment:orderData.comment,
-                department:orderData.department,
-                category:orderData.category,
-                subCategory:orderData.subCategory,
-                testName:orderData.testName
+
+                reqDate:orderData.reqDate,
+                dueDate:orderData.dueDate
             })
             request.save().then(() => {
                 resolve({'status':201, 'message':'New Order Request Created!'});
@@ -63,6 +63,17 @@ var orderController = function () {
         })
     }
 ////////////////////////////////////////////////////////////////////////
+
+
+    this.delete = function(id){
+        return new Promise ((resolve,reject) =>{
+            orderSchema.remove({_id:id}).then(() => {
+            resolve({'status':200, 'message':'Order Request Deleted'});
+        }).catch( err => {
+            reject({'status':500, 'message':err});
+        })
+        })
+    }
 }
 
 module.exports = new orderController();
