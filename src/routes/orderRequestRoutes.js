@@ -20,7 +20,7 @@ Route.get('/requestView', (req,res) => {
 
 
 Route.get('/requestView/:reqId', (req,res) => {
-    controller.viewOrderByReqId(req.params.reqId, req.body).then(response => {
+    controller.viewOrderByReqId(req.params.reqId).then(response => {
         res.status(response.status).send(response.message);
 }).catch(err => {
         res.status(err.status).send(err.message);
@@ -28,7 +28,7 @@ Route.get('/requestView/:reqId', (req,res) => {
 });
 
 Route.get('/requestView/:patientHIN', (req,res) => {
-    controller.viewOrderByPatientHIN(req.params.patientHIN, req.body).then(response => {
+    controller.viewOrderByPatientHIN(req.params.patientHIN).then(response => {
     res.status(response.status).send(response.message);
 }).catch(err => {
     res.status(err.status).send(err.message);
