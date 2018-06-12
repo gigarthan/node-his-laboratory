@@ -52,7 +52,7 @@ var orderController = function () {
         })
     }
 
-
+////////////// NEED TO RE-CHECK AGAIN//////////////////////////////////////////////
     this.viewOrderByPatientHIN = function(patientHIN){
         return new Promise ((resolve,reject) => {
             orderSchema.find({patientHIN:patientHIN}).exec().then(data => {
@@ -62,7 +62,7 @@ var orderController = function () {
         })
         })
     }
-
+////////////////////////////////////////////////////////////////////////
 }
 
 module.exports = new orderController();
