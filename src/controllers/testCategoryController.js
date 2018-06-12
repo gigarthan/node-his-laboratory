@@ -119,7 +119,7 @@ this.updateTestCategory = function (name, newData) {
 
 };
 
-};
+
 
 //delete test category
 
@@ -145,6 +145,7 @@ this.deleteTestCategory = function (name) {
 };
 
 
+};
 
 
 module.exports = new testCategoryController();
