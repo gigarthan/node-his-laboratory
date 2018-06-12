@@ -2,6 +2,29 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
+
+    //the auto generated id value will be the reqID
+    reqId:{
+        type:Number,
+        required:true
+    },
+    patientHIN: {
+        type: Number,
+        required: true
+    },
+    fullName: {
+        type: String,
+        required: true
+    },
+    gender: {
+        type: String,
+        enum: [ 'male', 'female' ],
+        required: true
+    },
+    dob: {
+        type: Date,
+        required: true
+    },
     status: {
         type: String,
         enum: [
@@ -20,14 +43,6 @@ const orderSchema = new Schema({
         ],
         required: true
     },
-    patientHIN: {
-        type: Number,
-        required: true
-    },
-    testName: {
-        type: String,
-        required: true
-    },
     reqDate: {
         type: Date,
         required: true,
@@ -42,7 +57,25 @@ const orderSchema = new Schema({
         required: true
     },
     comment: String,
-    department: String
+    department: String,
+    category:{
+        type:String,
+        required:true
+    },
+    subCategory:{
+        type:String,
+        required:true
+    },
+    testName: {
+        type: String,
+        required: true
+    },
+    specimenType: String,
+    retentionType: String,
+    collectedDate: String,
+    remarks : String
+
+
 });
 
 // EXPORT
