@@ -3,11 +3,7 @@ const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
 
-    //the auto generated id value will be the reqID
-    reqId:{
-        type:String,
-        //required:true
-    },
+    // Patient Details
     patientHIN: {
         type: String,
         required: true
@@ -25,13 +21,15 @@ const orderSchema = new Schema({
         type: Date,
         required: true
     },
-    status: {
+
+    // Test Request Details
+    //the auto generated id value will be the reqID
+    reqId:{
+        type:String,
+        //required:true
+    },
+    testName: {
         type: String,
-        enum: [
-            'report_issued',
-            'sample_required',
-            'sample_collected',
-        ],
         required: true
     },
     priority: {
@@ -43,6 +41,9 @@ const orderSchema = new Schema({
         ],
         required: true
     },
+    comment: String,
+
+    // Auto displayed according to system dataTime
     reqDate: {
         type: Date,
         required: true,
@@ -52,24 +53,37 @@ const orderSchema = new Schema({
         type: Date,
         required: true
     },
+    //department: String,
+
+    // Displayed According to the Login
     reqPerson: {
         type: String,
         required: true
     },
-    comment: String,
-    department: String,
-    category:{
+    departmentCategory:{
         type:String,
         required:true
     },
-    subCategory:{
+    departmentSubCategory:{
         type:String,
         required:true
     },
-    testName: {
+
+
+
+    // Test Details
+
+    status: {
         type: String,
-        required: true
+        enum: [
+            'report_issued',
+            'sample_required',
+            'sample_collected',
+        ],
+        //required: true
     },
+
+    // Specimen Details
     specimenType:{
         type: String,
         //required: true
