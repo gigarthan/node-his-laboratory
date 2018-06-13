@@ -16,7 +16,11 @@ const testCategoryController = function () {
         return new Promise((resolve, reject) => {
 
             const testCategory = new testCategorySchema({
-                name: testCategoryInstance.name
+                name: testCategoryInstance.name,
+                subCategoryName: testCategoryInstance.subCategoryName,
+                specimenType: testCategoryInstance.specimenType,
+                specimenRetentionType: testCategoryInstance.specimenRetentionType,
+                duration: testCategoryInstance.duration,
             });
 
             testCategory.save().then(() => {
@@ -62,7 +66,7 @@ const testCategoryController = function () {
 
 
 
-//Get a specific test category
+//Get a specific test category by categoryName
 
 
 
@@ -93,7 +97,7 @@ this.getSingleTestCategory = function (name) {
 
 
 
-//Update a test category
+//Update a test category by categoryName
 
 
 
@@ -121,7 +125,7 @@ this.updateTestCategory = function (name, newData) {
 
 
 
-//delete test category
+//delete test category by categoryName
 
 
 
