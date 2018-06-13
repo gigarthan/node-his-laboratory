@@ -81,7 +81,7 @@ router.delete('/:name', (req, res) =>{
 router.put('/:name', (req, res)=> {
     sampleCenterController.updateSampleCenter(req.params.name, req.body).then(data => {
         res.status(data.status).send(data.message);
-    }).catch(err => {
+    }).catch(err =>{
         res.status(err.status).send(err.message);
     });
 });
