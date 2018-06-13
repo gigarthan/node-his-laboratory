@@ -21,11 +21,11 @@ router.get('/',  (req, res)=> {
 
 
 
-//Get single test category
+//Get single test category by categoryName
 
 
 
-router.get('/:name', (req, res) =>{
+router.get('/:categoryName', (req, res) =>{
     testCategoryController.getSingleTestCategory(req.params.name).then(data => {
         res.status(data.status).send(data.data);
     }).catch(err =>{
@@ -49,11 +49,11 @@ router.post('/', (req, res) =>{
 
 
 
-//delete test category
+//delete test category by categoryName
 
 
 
-router.delete('/:name', (req, res) =>{
+router.delete('/:categoryName', (req, res) =>{
     testCategoryController.deleteTestCategory(req.params.name).then(data =>{
         res.status(data.status).send(data.response);
     }).catch(err =>{
@@ -63,11 +63,11 @@ router.delete('/:name', (req, res) =>{
 
 
 
-//update test category
+//update test category by categoryName
 
 
 
-router.put('/:name', (req, res)=> {
+router.put('/:categoryName', (req, res)=> {
     testCategoryController.updateTestCategory(req.params.name, req.body).then(data => {
         res.status(data.status).send(data.message);
     }).catch(err => {
