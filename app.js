@@ -36,18 +36,13 @@ app.use(passport.initialize());
 
 const testCategoryRouter = require('./src/routes/labTest/testCategoryRouter');
 
-app.use('/api/test-category', testCategoryRouter);
+app.use('/api/test-categories', testCategoryRouter);
 
 
-
-//Routes for test sub category
-
-const subCategoryRouter  = require('./src/routes/labTest/testSubCategoryRouter');
-
-app.use('/api/test-subcategory',subCategoryRouter);
 
 
 /////////////////////////////////////////////////////////////////////////
+
 
 
 
@@ -59,7 +54,7 @@ app.use('/api/test-subcategory',subCategoryRouter);
 
 const labDepartmentRouter  = require('./src/routes/laboratory/labDepartmentRouter');
 
-app.use('/api/lab-department',labDepartmentRouter);
+app.use('/api/lab-departments',labDepartmentRouter);
 
 
 
@@ -67,7 +62,7 @@ app.use('/api/lab-department',labDepartmentRouter);
 
 const labTypeRouter  = require('./src/routes/laboratory/labTypeRouter');
 
-app.use('/api/lab-type',labTypeRouter);
+app.use('/api/lab-types',labTypeRouter);
 
 
 
@@ -75,7 +70,7 @@ app.use('/api/lab-type',labTypeRouter);
 
 const laboratoryRouter  = require('./src/routes/laboratory/laboratoryRoute');
 
-app.use('/api/laboratory',laboratoryRouter);
+app.use('/api/laboratories',laboratoryRouter);
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -91,7 +86,7 @@ app.use('/api/laboratory',laboratoryRouter);
 
 const sampleCenterTypeRouter  = require('./src/routes/sampleCenter/sampleCenterTypeRouter');
 
-app.use('/api/sample-center-type',sampleCenterTypeRouter);
+app.use('/api/sample-center-types',sampleCenterTypeRouter);
 
 
 
@@ -100,7 +95,7 @@ app.use('/api/sample-center-type',sampleCenterTypeRouter);
 
 const sampleCenterRouter  = require('./src/routes/sampleCenter/sampleCenterRouter');
 
-app.use('/api/sample-center',sampleCenterRouter);
+app.use('/api/sample-centers',sampleCenterRouter);
 
 
 
