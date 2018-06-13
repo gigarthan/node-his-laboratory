@@ -3,18 +3,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
 const testSubCategorySchema = new Schema({
-
-
-
-    name:{
-        type:String,
+    name: {
+        type: String,
         unique: true,
-        required :true
-    },
-
-
+        required: true
+    }
 });
 
-module.exports = mongoose.model('TestSubCategory',testSubCategorySchema);
+module.exports = mongoose.model('TestSubCategory', testSubCategorySchema);

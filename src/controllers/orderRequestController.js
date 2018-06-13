@@ -115,6 +115,34 @@ var orderController = function () {
             })
         })
     }
+
+    this.addSpecimenDetails = function(id, specimen) {
+        return new Promise((resolve, reject) => {
+            orderSchema.findById(id)
+                        .then(order => {
+                            order.specimen = specimen;
+                            order.save()
+                                .then( () => {
+                                    resolve({
+                                        'status': 200,
+                                        'message': 'Specimen successfully added'
+                                    });
+                                })
+                                .catch(err => {
+                                    reject({
+                                        'status': 500,
+                                        'message': err.message
+                                    });
+                                });
+                        })
+                        .catch(err => {
+                            reject({
+                                'status': 400,
+                                'message': err.message
+                            });
+                        });
+        });
+    };
 }
 
 module.exports = new orderController();

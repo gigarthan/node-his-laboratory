@@ -13,7 +13,7 @@ const SampleCenterSchema = new Schema({
         type: String,
         required: true
     },
-    InCharge: {
+    inCharge: {
         type: String
     },
     location: {

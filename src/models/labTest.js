@@ -1,21 +1,20 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const bcrypt = require('bcrypt-nodejs');
 
 const LabTestSchema = new Schema({
-    laboratary:{
+    laboratary: {
         type: String,
         //required: true
     },
-    category:{
+    category: {
         type: String,
         //required: true
     },
-    subCategory:{
+    subCategory: {
         type: String,
         //required: true
     },
-    testName:{
+    testName: {
         type: String,
         //required: true
     }
