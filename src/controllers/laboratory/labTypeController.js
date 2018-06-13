@@ -1,28 +1,28 @@
 //IT16139640
-'use strict';
-
-const labDepartmentSchema = require('../models/labDepartment');
 
 
-
-const labDepartmentController = function () {
-
-
-    //Add new test sub category
+const labTypeSchema = require('../../models/laboratory/labType');
 
 
-    this.addLabDepartment = function (labDepartmentInstance) {
+
+const labTypeController = function () {
+
+
+    //Add new lab type
+
+
+    this.addLabType = function (labTypeInstance) {
         return new Promise((resolve, reject) => {
 
-            const labDepartment = new labDepartmentSchema({
-                name: labDepartmentInstance.name
+            const labType = new labTypeSchema({
+                name: labTypeInstance.name
             });
 
-            labDepartment.save().then(() => {
+            labType.save().then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'New lab department added '
+                    message: 'New lab type added '
                 });
             }).catch(err => {
                 reject({
@@ -36,16 +36,16 @@ const labDepartmentController = function () {
 
 
 
-    //Get all lab departments
+    //Get all lab types
 
 
 
-    this.getAllLabDepartments = function () {
+    this.getAllLabTypes = function () {
         return new Promise((resolve, reject) => {
-            labDepartmentSchema.find().exec().then(data => {
+            labTypeSchema.find().exec().then(data => {
                 resolve({
                     status: 200,
-                    message: 'Get lab departments',
+                    message: 'Get lab types',
                     data: data
                 });
             }).catch(err => {
@@ -61,19 +61,19 @@ const labDepartmentController = function () {
 
 
 
-//Get a specific lab department
+//Get a specific lab type
 
 
-    this.getSingleLabDepartment = function (name) {
+    this.getSingleLabType = function (name) {
         return new Promise((resolve, reject) => {
 
-            labDepartmentSchema.find({
+            labTypeSchema.find({
                 name: name
             }).exec().then(data => {
 
                 resolve({
                     status: 200,
-                    message: 'Get a specific test sub category',
+                    message: 'Get a specific lab type',
                     data: data
                 });
             }).catch(err => {
@@ -91,20 +91,20 @@ const labDepartmentController = function () {
 
 
 
-//Update a lab department
+//Update a lab type
 
 
 
-    this.updateLabDepartment = function (name, newData) {
+    this.updateLabType = function (name, newData) {
         return new Promise((resolve, reject) => {
 
-            labDepartmentSchema.update({
+            labTypeSchema.update({
                 name: name
             }, newData).then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'Update lab department'
+                    message: 'Update lab type'
                 });
             }).catch(err => {
                 reject({
@@ -119,19 +119,20 @@ const labDepartmentController = function () {
 
 
 
-//delete lab department
+
+//delete lab type
 
 
 
-    this.deleteLabDepartment = function (name) {
+    this.deleteLabType = function (name) {
 
         return new Promise((resolve, reject) => {
-            labDepartmentSchema.remove({
+            labTypeSchema.remove({
                 name: name
             }).then(() => {
                 resolve({
                     status: 200,
-                    message: 'Delete lab department'
+                    message: 'Delete lab type'
                 });
             }).catch(err => {
                 reject({
@@ -146,4 +147,6 @@ const labDepartmentController = function () {
 };
 
 
-module.exports = new labDepartmentController();
+module.exports = new labTypeController();
+
+

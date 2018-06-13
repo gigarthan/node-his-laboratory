@@ -3,16 +3,16 @@
 const express = require('express');
 const router = express.Router();
 
-const labDepartmentController = require('../controllers/labDepartmentController');
+const sampleCenterController = require('../../controllers/sampleCenter/sampleCenterController');
 
 
 
-//Get lab departments
+//////Get sample centers
 
 
 
 router.get('/',  (req, res)=> {
-    labDepartmentController.getAllLabDepartments().then(data=> {
+    sampleCenterController.getAllSampleCenters().then(data=> {
         res.status(data.status).send(data.data);
     }).catch(err=> {
         res.status(err.status).send(err.message);
@@ -21,12 +21,15 @@ router.get('/',  (req, res)=> {
 
 
 
-//Get single test category
 
+//////Get single sample center
+
+
+//By name
 
 
 router.get('/:name', (req, res) =>{
-    labDepartmentController.getSingleLabDepartment(req.params.name).then(data => {
+    sampleCenterController.getSingleSampleCenter(req.params.name).then(data => {
         res.status(data.status).send(data.data);
     }).catch(err =>{
         res.status(err.status).send(err.message);
@@ -35,12 +38,13 @@ router.get('/:name', (req, res) =>{
 
 
 
-//Add new test category
+
+//////Add new sample center
 
 
 
 router.post('/', (req, res) =>{
-    labDepartmentController.addLabDepartment(req.body).then(data => {
+    sampleCenterController.addSampleCenter(req.body).then(data => {
         res.status(data.status).send(data.message);
     }).catch(function (err) {
         res.status(err.status).send(err.message);
@@ -49,12 +53,15 @@ router.post('/', (req, res) =>{
 
 
 
-//delete test category
+//////delete sample center
 
+
+
+//by name
 
 
 router.delete('/:name', (req, res) =>{
-    labDepartmentController.deleteLabDepartment(req.params.name).then(data =>{
+    sampleCenterController.deleteSampleCenter(req.params.name).then(data =>{
         res.status(data.status).send(data.response);
     }).catch(err =>{
         res.status(err.status).send(err.message);
@@ -63,14 +70,18 @@ router.delete('/:name', (req, res) =>{
 
 
 
-//update test category
 
+//////update sample center
+
+
+
+//Update by name
 
 
 router.put('/:name', (req, res)=> {
-    labDepartmentController.updateLabDepartment(req.params.name, req.body).then(data => {
+    sampleCenterController.updateSampleCenter(req.params.name, req.body).then(data => {
         res.status(data.status).send(data.message);
-    }).catch(err => {
+    }).catch(err =>{
         res.status(err.status).send(err.message);
     });
 });

@@ -1,16 +1,18 @@
+//IT16139640
+
 const express = require('express');
 const router = express.Router();
 
-const testCategoryController = require('../controllers/testCategoryController');
+const laboratoryController = require('../../controllers/laboratory/laboratoryController');
 
 
 
-//Get lab categories
+//////Get laboratories
 
 
 
 router.get('/',  (req, res)=> {
-    testCategoryController.getAllTestCategory().then(data=> {
+    laboratoryController.getAllLaboratories().then(data=> {
         res.status(data.status).send(data.data);
     }).catch(err=> {
         res.status(err.status).send(err.message);
@@ -19,12 +21,12 @@ router.get('/',  (req, res)=> {
 
 
 
-//Get single test category
+//////Get single laboratory
 
-
+//By name
 
 router.get('/:name', (req, res) =>{
-    testCategoryController.getSingleTestCategory(req.params.name).then(data => {
+    laboratoryController.getSingleLaboratory(req.params.name).then(data => {
         res.status(data.status).send(data.data);
     }).catch(err =>{
         res.status(err.status).send(err.message);
@@ -33,12 +35,13 @@ router.get('/:name', (req, res) =>{
 
 
 
-//Add new test category
+
+//////Add new laboratory
 
 
 
 router.post('/', (req, res) =>{
-    testCategoryController.addTestCategory(req.body).then(data => {
+    laboratoryController.addLaboratory(req.body).then(data => {
         res.status(data.status).send(data.message);
     }).catch(function (err) {
         res.status(err.status).send(err.message);
@@ -47,12 +50,12 @@ router.post('/', (req, res) =>{
 
 
 
-//delete test category
+//////delete laboratory
 
-
+//by name
 
 router.delete('/:name', (req, res) =>{
-    testCategoryController.deleteTestCategory(req.params.name).then(data =>{
+    laboratoryController.deleteLaboratory(req.params.name).then(data =>{
         res.status(data.status).send(data.response);
     }).catch(err =>{
         res.status(err.status).send(err.message);
@@ -61,12 +64,12 @@ router.delete('/:name', (req, res) =>{
 
 
 
-//update test category
+//////update laboratory
 
-
+//Update lab by name
 
 router.put('/:name', (req, res)=> {
-    testCategoryController.updateTestCategory(req.params.name, req.body).then(data => {
+    laboratoryController.updateLaboratory(req.params.name, req.body).then(data => {
         res.status(data.status).send(data.message);
     }).catch(err => {
         res.status(err.status).send(err.message);

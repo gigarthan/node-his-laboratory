@@ -1,28 +1,27 @@
 //IT16139640
-'use strict';
 
-const testSubCategorySchema = require('../models/testSubCategory');
-
+const sampleCenterTypeSchema = require('../../models/sampleCenter/sampleCenterType');
 
 
-const testSubCategoryController = function () {
+
+const sampleCenterTypeController = function () {
 
 
-    //Add new test sub category
+    //Add new sample center type
 
 
-    this.addTestSubCategory = function (testSubCategoryInstance) {
+    this.addSampleCenterType = function (sampleCenterTypeInstance) {
         return new Promise((resolve, reject) => {
 
-            const testSubCategory = new testSubCategorySchema({
-                name: testSubCategoryInstance.name
+            const sampleCenterType = new sampleCenterTypeSchema({
+                name: sampleCenterTypeInstance.name
             });
 
-            testSubCategory.save().then(() => {
+            sampleCenterType.save().then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'New Test sub Category added '
+                    message: 'New sample center type added '
                 });
             }).catch(err => {
                 reject({
@@ -36,16 +35,16 @@ const testSubCategoryController = function () {
 
 
 
-    //Get all test sub categories
+    //Get all sample center types
 
 
 
-    this.getAllTestSubCategory = function () {
+    this.getAllSampleCenterTypes = function () {
         return new Promise((resolve, reject) => {
-            testSubCategorySchema.find().exec().then(data => {
+            sampleCenterTypeSchema.find().exec().then(data => {
                 resolve({
                     status: 200,
-                    message: 'Get test sub categories',
+                    message: 'Get sample center types',
                     data: data
                 });
             }).catch(err => {
@@ -61,20 +60,19 @@ const testSubCategoryController = function () {
 
 
 
-//Get a specific test sub category
+//Get a specific sample center type
 
 
-
-    this.getSingleTestSubCategory = function (name) {
+    this.getSingleSampleCenterType = function (name) {
         return new Promise((resolve, reject) => {
 
-            testSubCategorySchema.find({
+            sampleCenterTypeSchema.find({
                 name: name
             }).exec().then(data => {
 
                 resolve({
                     status: 200,
-                    message: 'Get a specific test sub category',
+                    message: 'Get a specific sample center type',
                     data: data
                 });
             }).catch(err => {
@@ -92,20 +90,20 @@ const testSubCategoryController = function () {
 
 
 
-//Update a test sub category
+//Update a sample center type
 
 
 
-    this.updateTestSubCategory = function (name, newData) {
+    this.updateSampleCenterType = function (name, newData) {
         return new Promise((resolve, reject) => {
 
-            testSubCategorySchema.update({
+            sampleCenterTypeSchema.update({
                 name: name
             }, newData).then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'Update test sub category'
+                    message: 'Update sample center type'
                 });
             }).catch(err => {
                 reject({
@@ -120,19 +118,20 @@ const testSubCategoryController = function () {
 
 
 
-//delete test sub category
+
+//delete sample center type
 
 
 
-    this.deleteTestSubCategory = function (name) {
+    this.deleteSampleCenterType = function (name) {
 
         return new Promise((resolve, reject) => {
-            testSubCategorySchema.remove({
+            sampleCenterTypeSchema.remove({
                 name: name
             }).then(() => {
                 resolve({
                     status: 200,
-                    message: 'Delete test sub category'
+                    message: 'Delete sample center type'
                 });
             }).catch(err => {
                 reject({
@@ -147,4 +146,6 @@ const testSubCategoryController = function () {
 };
 
 
-module.exports = new testSubCategoryController();
+module.exports = new sampleCenterTypeController();
+
+

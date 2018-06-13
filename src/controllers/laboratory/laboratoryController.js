@@ -1,28 +1,37 @@
 //IT16139640
 
 
-const labTypeSchema = require('../models/labType');
+const laboratorySchema = require('../../models/laboratory/laboratory');
 
 
 
-const labTypeController = function () {
+const laboratoryController = function () {
 
 
-    //Add new lab type
+//////Add new laboratory
 
 
-    this.addLabType = function (labTypeInstance) {
+    this.addLaboratory = function (laboratoryInstance) {
         return new Promise((resolve, reject) => {
 
-            const labType = new labTypeSchema({
-                name: labTypeInstance.name
+            const laboratory = new laboratorySchema({
+
+                name: laboratoryInstance.name,
+                 labTypes :laboratoryInstance.labTypes,
+                 department :laboratoryInstance.department,
+                count : laboratoryInstance.count,
+                labInCharge: laboratoryInstance.labInCharge,
+                location: laboratoryInstance.location,
+                email : laboratoryInstance.email,
+                contact1 :laboratoryInstance.contact1,
+                contact2: laboratoryInstance.contact2
             });
 
-            labType.save().then(() => {
+            laboratory.save().then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'New lab type added '
+                    message: 'New laboratory added '
                 });
             }).catch(err => {
                 reject({
@@ -36,16 +45,16 @@ const labTypeController = function () {
 
 
 
-    //Get all lab types
+//////Get all laboratories
 
 
 
-    this.getAllLabTypes = function () {
+    this.getAllLaboratories = function () {
         return new Promise((resolve, reject) => {
-            labTypeSchema.find().exec().then(data => {
+            laboratorySchema.find().exec().then(data => {
                 resolve({
                     status: 200,
-                    message: 'Get lab types',
+                    message: 'Get laboratories',
                     data: data
                 });
             }).catch(err => {
@@ -61,19 +70,20 @@ const labTypeController = function () {
 
 
 
-//Get a specific lab type
+//////Get a specific laboratory
 
+// By name
 
-    this.getSingleLabType = function (name) {
+    this.getSingleLaboratory = function (name) {
         return new Promise((resolve, reject) => {
 
-            labTypeSchema.find({
+            laboratorySchema.find({
                 name: name
             }).exec().then(data => {
 
                 resolve({
                     status: 200,
-                    message: 'Get a specific lab type',
+                    message: 'Get a specific laboratory',
                     data: data
                 });
             }).catch(err => {
@@ -91,20 +101,20 @@ const labTypeController = function () {
 
 
 
-//Update a lab type
+//////Update a laboratory
 
+//by name
 
-
-    this.updateLabType = function (name, newData) {
+    this.updateLaboratory= function (name, data) {
         return new Promise((resolve, reject) => {
 
-            labTypeSchema.update({
+            laboratorySchema.update({
                 name: name
-            }, newData).then(() => {
+            }, data).then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'Update lab type'
+                    message: 'Update laboratory by name'
                 });
             }).catch(err => {
                 reject({
@@ -120,19 +130,21 @@ const labTypeController = function () {
 
 
 
-//delete lab type
+//////delete laboratory
 
 
+//by name
 
-    this.deleteLabType = function (name) {
+
+    this.deleteLaboratory = function (name) {
 
         return new Promise((resolve, reject) => {
-            labTypeSchema.remove({
+            laboratorySchema.remove({
                 name: name
             }).then(() => {
                 resolve({
                     status: 200,
-                    message: 'Delete lab type'
+                    message: 'Delete laboratory by name'
                 });
             }).catch(err => {
                 reject({
@@ -147,6 +159,6 @@ const labTypeController = function () {
 };
 
 
-module.exports = new labTypeController();
+module.exports = new laboratoryController();
 
 

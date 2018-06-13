@@ -3,12 +3,21 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const sampleCenterTypeSchema = new Schema({
+const labTypeSchema = new Schema({
+
+
     name: {
         type: String,
         required: true,
-        unique: true
+        unique :true
     }
+
 });
 
-module.exports = mongoose.model('SampleCenterType', sampleCenterTypeSchema);
+module.exports = mongoose.model('LabType', labTypeSchema);
+
+
+
+
+
+
