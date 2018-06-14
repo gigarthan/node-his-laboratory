@@ -21,9 +21,52 @@ app.use(express.json());
 app.use(passport.initialize());
 
 // Routes
+
 const orderRequestRouter = require('./src/routes/orderRequestRoutes');
 
 app.use('/api/requests', orderRequestRouter);
+
+
+
+//Routes for test category
+
+const testCategoryRouter = require('./src/routes/labTest/testCategoryRouter');
+
+app.use('/api/test-categories', testCategoryRouter);
+
+
+
+//Routes for lab departments
+
+const labDepartmentRouter  = require('./src/routes/laboratory/labDepartmentRouter');
+
+app.use('/api/lab-departments',labDepartmentRouter);
+
+
+
+//Routes for lab types
+
+const labTypeRouter  = require('./src/routes/laboratory/labTypeRouter');
+
+app.use('/api/lab-types',labTypeRouter);
+
+
+
+//Routes for sample center types
+
+const sampleCenterTypeRouter  = require('./src/routes/sampleCenter/sampleCenterTypeRouter');
+
+app.use('/api/sample-center-types',sampleCenterTypeRouter);
+
+
+//Routes for sample centers
+
+const sampleCenterRouter  = require('./src/routes/sampleCenter/sampleCenterRouter');
+
+app.use('/api/sample-centers',sampleCenterRouter);
+
+
+
 
 app.listen(PORT, () => {
     console.log(`SERVER RUNNING ON PORT ${PORT}`);
