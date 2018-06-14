@@ -3,40 +3,38 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
 
 const TestFieldSchema = new Schema({
-    testName:{
+    testName: {
         type: String,
         required: true
     },
-    field:{
+    field: {
         type: String,
         required: true
     },
-    gender:{
+    gender: {
         type: String,
         required: true
     },
-    minAge:{
+    minAge: {
         type: String,
         required: true
     },
-    maxAge:{
+    maxAge: {
         type: String,
         //required: true
     },
-    minValue:{
+    minValue: {
         type: String,
         //required: true
     },
-    maxValue:{
+    maxValue: {
         type: String,
         //required: true
     },
-    unit:{
+    unit: {
         type: String,
         //required: true
     }
 });
 
 module.exports = mongoose.model('TestField', TestFieldSchema);
-
-

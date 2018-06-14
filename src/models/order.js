@@ -15,7 +15,7 @@ const orderSchema = new Schema({
     },
     gender: {
         type: String,
-        enum: [ 'male', 'female' ],
+        enum: ['male', 'female'],
         required: true
     },
     dob: {
@@ -26,8 +26,8 @@ const orderSchema = new Schema({
     // 02.
     // Request Details
     // The auto generated id value will be the reqID
-    reqId:{
-        type:String,
+    reqId: {
+        type: String,
         //required:true
     },
 
@@ -37,7 +37,7 @@ const orderSchema = new Schema({
         required: true
     },
     // Associated with the login token
-    department:{
+    department: {
         type: String,
         required: true
     },
@@ -54,12 +54,12 @@ const orderSchema = new Schema({
 
     // 03.
     // Test Details
-    category:{
-        type:String,
+    category: {
+        type: String,
         //required:true
     },
-    subCategory:{
-        type:String,
+    subCategory: {
+        type: String,
         //required:true
     },
     testName: {
@@ -77,8 +77,6 @@ const orderSchema = new Schema({
     },
     comment: String,
 
-    // 04.
-    // After Accepting the Test
     // Test Details
     status: {
         type: String,
@@ -91,21 +89,14 @@ const orderSchema = new Schema({
     },
 
     // Specimen Details
-    specimenType:{
+    specimen: {
         type: String,
-        //required: true
-    },
-    retentionType: {
-        type: String,
-        //required: true
-    },
-    collectedDate:{
-        type: Date,
-        //required: true
-    },
-    remarks : String
-
-
+        retentionType: String,
+        collectedDate: Date,
+        location: String,
+        storedDate: Date,
+        remarks: String
+    }
 });
 
 // EXPORT
