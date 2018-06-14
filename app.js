@@ -21,10 +21,8 @@ app.use(express.json());
 app.use(passport.initialize());
 
 // Routes
-const testCategoryRouter = require('./src/routes/testCategoryRouter');
 const orderRequestRouter = require('./src/routes/orderRequestRoutes');
 
-app.use('/api/test-category', testCategoryRouter);
 app.use('/api/requests', orderRequestRouter);
 
 app.listen(PORT, () => {
