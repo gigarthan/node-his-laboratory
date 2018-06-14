@@ -35,6 +35,13 @@ const testCategoryRouter = require('./src/routes/labTest/testCategoryRouter');
 app.use('/api/test-categories', testCategoryRouter);
 
 
+//Routes for labs
+
+const laboratoryRoute  = require('./src/routes/laboratory/laboratoryRoute');
+
+app.use('/api/labs',laboratoryRoute);
+
+
 
 //Routes for lab departments
 
