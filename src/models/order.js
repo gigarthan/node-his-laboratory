@@ -89,14 +89,7 @@ const orderSchema = new Schema({
     },
 
     // Specimen Details
-    specimen: {
-        type: String,
-        retentionType: String,
-        collectedDate: Date,
-        location: String,
-        storedDate: Date,
-        remarks: String
-    }
+    specimen: Object
 });
 
 // EXPORT

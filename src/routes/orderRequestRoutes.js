@@ -46,9 +46,9 @@ Route.get('/patient/:patientHin', (req, res) => {
 // });
 
 Route.put('/:reqId', (req, res) => {
-    const {body} = req;
+    const specimen = req.body;
     const {reqId} = req.params;
-    controller.addSpecimenDetails(id, body)
+    controller.addSpecimenDetails(reqId, specimen)
             .then(response => {
                 res.status(response.status).json(response.message);
             })
