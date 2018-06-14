@@ -18,7 +18,7 @@ const sampleCenterController = function () {
 
                 name: sampleCenterInstance.name,
                 type :sampleCenterInstance.type,
-                InCharge: sampleCenterInstance.InCharge,
+                inCharge: sampleCenterInstance.inCharge,
                 location: sampleCenterInstance.location,
                 email : sampleCenterInstance.email,
                 contact1 :sampleCenterInstance.contact1,
