@@ -1,4 +1,3 @@
-var mongoose = require('../config/database')
 var orderSchema = require('../models/order');
 
 var orderController = function () {
