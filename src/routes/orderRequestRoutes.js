@@ -1,6 +1,6 @@
-var express = require('express');
-var Route = express.Router();
-var controller = require('../controllers/orderRequestController');
+const express = require('express');
+const Route = express.Router();
+const controller = require('../controllers/orderRequestController');
 
 Route.post('/', (req, res) => {
     controller.createNewOrder(req.body).then(response => {
@@ -46,9 +46,9 @@ Route.get('/patient/:patientHin', (req, res) => {
 // });
 
 Route.put('/:reqId', (req, res) => {
-    const {body} = req;
+    const specimen = req.body;
     const {reqId} = req.params;
-    controller.addSpecimenDetails(id, body)
+    controller.addSpecimenDetails(reqId, specimen)
             .then(response => {
                 res.status(response.status).json(response.message);
             })
@@ -56,6 +56,5 @@ Route.put('/:reqId', (req, res) => {
                 res.status(err.status).json(err.message);
             });
 });
-
 
 module.exports = Route;

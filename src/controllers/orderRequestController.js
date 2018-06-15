@@ -1,4 +1,3 @@
-var mongoose = require('../config/database')
 var orderSchema = require('../models/order');
 
 var orderController = function () {
@@ -121,6 +120,7 @@ var orderController = function () {
             orderSchema.findById(id)
                         .then(order => {
                             order.specimen = specimen;
+                            order.status = 'sample_collected';
                             order.save()
                                 .then( () => {
                                     resolve({

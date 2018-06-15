@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const bcrypt = require('bcrypt-nodejs');
 
 const TestFieldSchema = new Schema({
     testName: {
@@ -16,19 +15,19 @@ const TestFieldSchema = new Schema({
         required: true
     },
     minAge: {
-        type: String,
+        type: Number,
         required: true
     },
     maxAge: {
-        type: String,
+        type: Number,
         //required: true
     },
     minValue: {
-        type: String,
+        type: Number,
         //required: true
     },
     maxValue: {
-        type: String,
+        type: Number,
         //required: true
     },
     unit: {
