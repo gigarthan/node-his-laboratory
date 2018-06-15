@@ -30,6 +30,7 @@ const laboratoryController = function () {
             laboratory.save().then(() => {
 
                 resolve({
+                    data:laboratory,
                     status: 200,
                     message: 'New laboratory added '
                 });
