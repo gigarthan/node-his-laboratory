@@ -7,10 +7,10 @@ var Controller = function () {
     this.addLabTest = function (data) {
         return new Promise(function (resolve, reject) {
             var labTest = new LabTest({
-                Laboratary: data.Laboratary,
-                Category: data.Category,
-                SubCategory:data.SubCategory,
-                TestName: data.TestName
+                laboratory: data.laboratory,
+                category: data.category,
+                subCategory:data.subCategory,
+                testName: data.testName
             });
             labTest.save().then(function () {
                 resolve({status: 201, message: 'Test added'});
@@ -31,9 +31,19 @@ var Controller = function () {
         });
     }
 
+    this.getAllTestFieldsData = function () {
+        return new Promise(function (resolve, reject) {
+            TestField.find().exec().then(function (data) {
+                resolve({status: 200, message: data});
+            }).catch(function (reason) {
+                reject({status: 500, message: 'Error- Test not found: '+reason});
+            });
+        });
+    }
+
     this.getLabTestInCategory = function (Category) {
         return new Promise(function (resolve, reject) {
-            LabTest.find({Category: Category}).exec().then(function (data) {
+            LabTest.find({category: Category}).exec().then(function (data) {
                 resolve({status: 200, test: data});
             }).catch(function (reason) {
                 reject({status: 500, message: 'Error- Test not found: '+reason});
@@ -43,7 +53,7 @@ var Controller = function () {
 
     this.getLabTestInSubCategory = function (SubCategory) {
         return new Promise(function (resolve, reject) {
-            LabTest.find({SubCategory: SubCategory}).exec().then(function (data) {
+            LabTest.find({subCategory: SubCategory}).exec().then(function (data) {
                 resolve({status: 200, test: data});
             }).catch(function (reason) {
                 reject({status: 500, message: 'Error- Test not found: '+reason});
@@ -53,7 +63,7 @@ var Controller = function () {
 
     this.updateLabTest = function (testName, data) {
         return new Promise(function (resolve, reject) {
-            LabTest.update({TestName: testName}, data).exec().then(function () {
+            LabTest.update({testName: testName}, data).then(function () {
                 resolve({status: 200, message: 'Test updated'});
             }).catch(function (reason) {
                 reject({status: 500, message: 'Cannot update test: '+reason});
@@ -64,7 +74,7 @@ var Controller = function () {
     this.deleteLabTest = function (testName) {
         return new Promise(function (resolve, reject) {
 
-            LabTest.remove({TestName: testName}).then(function () {
+            LabTest.remove({testName: testName}).then(function () {
                 resolve({status: 200, message: 'Test deleted'});
             }).catch(function (reason) {
                 reject({status: 500, message: 'Cannot delete test: '+reason});
@@ -75,14 +85,14 @@ var Controller = function () {
     this.addTestField = function (data) {
         return new Promise(function (resolve, reject) {
             var testField = new TestField({
-                TestName:data.TestName,
-                Field: data.Field,
-                Gender: data.Gender,
-                MinAge:data.MinAge,
-                MaxAge: data.MaxAge,
-                MinValue:data.MinValue,
-                MaxValue:data.MaxValue,
-                Unit:data.Unit,
+                testName:data.testName,
+                field: data.field,
+                gender: data.gender,
+                minAge:data.minAge,
+                maxAge: data.maxAge,
+                minValue:data.minValue,
+                maxValue:data.maxValue,
+                unit:data.unit,
             });
             testField.save().then(function () {
                 resolve({status: 201, message: 'TestField added'});
@@ -95,7 +105,7 @@ var Controller = function () {
 
     this.getAllTestFields = function (testName) {
         return new Promise(function (resolve, reject) {
-            TestField.find({TestName: testName}).exec().then(function (data) {
+            TestField.find({testName: testName}).exec().then(function (data) {
                 resolve({status: 200, book: data});
             }).catch(function (reason) {
                 reject({status: 500, message: 'Error- Test not found: '+reason});
@@ -105,7 +115,7 @@ var Controller = function () {
 
     this.updateTestField = function (testName, data) {
         return new Promise(function (resolve, reject) {
-            TestField.update({TestName: testName}, data).exec().then(function () {
+            TestField.update({testName: testName}, data).exec().then(function () {
                 resolve({status: 200, message: 'TestFields updated'});
             }).catch(function (reason) {
                 reject({status: 500, message: 'Cannot update test fields: '+reason});
@@ -113,9 +123,9 @@ var Controller = function () {
         });
     }
 
-    this.deleteTestField = function (testName) {
+    this.deleteTestField = function (testField) {
         return new Promise(function (resolve, reject) {
-            TestField.remove({TestName: testName}).then(function () {
+            TestField.remove({field: testField}).then(function () {
                 resolve({status: 200, message: 'TestField deleted'});
             }).catch(function (reason) {
                 reject({status: 500, message: 'Cannot delete test field: '+reason});
@@ -123,13 +133,15 @@ var Controller = function () {
         });
     }
 
+
+
     this.addNotification = function (data) {
         return new Promise(function (resolve, reject) {
             var testNotification = new TestNotification({
-                Date: data.Date,
-                Category: data.Category,
-                SubCategory:data.SubCategory,
-                TestName:data.TestName
+                date: data.date,
+                category: data.category,
+                subCategory:data.subCategory,
+                testName:data.testName
             });
             testNotification.save().then(function () {
                 resolve({status: 201, message: 'TestNotification added'});
@@ -140,51 +152,22 @@ var Controller = function () {
         });
     }
 
-    this.deleteNotification = function (Date,testName) {
+    this.getNotification = function () {
         return new Promise(function (resolve, reject) {
-            TestNotification.remove({Date: Date},{TestName:testName}).then(function () {
+            TestNotification.find().exec().then(function (data) {
+                resolve({status: 200, message: data});
+            }).catch(function (reason) {
+                reject({status: 500, message: 'Error: '+reason});
+            });
+        });
+    }
+
+    this.deleteNotification = function (testName) {
+        return new Promise(function (resolve, reject) {
+            TestNotification.remove({testName:testName}).then(function () {
                 resolve({status: 200, message: 'Notification deleted'});
             }).catch(function (reason) {
                 reject({status: 500, message: 'Cannot delete notification: '+reason});
-            });
-        });
-    }
-
-    this.registerUser = function (data) {
-        return new Promise(function (resolve, reject) {
-            var register = new Register({
-                FirstName: data.FirstName,
-                LastName: data.LastName,
-                Email:data.Email,
-                PhoneNumber:data.PhoneNumber,
-                UserName:data.UserName,
-                Password:data.Password
-            });
-            register.save().then(function () {
-                resolve({status: 201, message: 'User added'});
-            }).catch(function (reason) {
-                reject({status: 500, message: 'Error: '+reason})
-            });
-
-        });
-    }
-
-    this.updateUser = function (UserName, data) {
-        return new Promise(function (resolve, reject) {
-            Register.update({UserName: UserName}, data).exec().then(function () {
-                resolve({status: 200, message: 'User updated'});
-            }).catch(function (reason) {
-                reject({status: 500, message: 'Cannot update user: '+reason});
-            });
-        });
-    }
-
-    this.deleteUser = function (UserName) {
-        return new Promise(function (resolve, reject) {
-            Register.remove({UserName: UserName}).then(function () {
-                resolve({status: 200, message: 'User deleted'});
-            }).catch(function (reason) {
-                reject({status: 500, message: 'Cannot delete user: '+reason});
             });
         });
     }
