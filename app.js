@@ -8,6 +8,7 @@ const cors = require('cors');
 require('./src/config/passport')(passport);
 
 const Routes = require('./Routes');
+//const  Routes = require('./Routes');
 const app = express();
 
 const PORT = process.env.PORT || 3001;
@@ -22,10 +23,23 @@ app.use(passport.initialize());
 const orderRequestRouter = require('./src/routes/orderRequestRoutes');
 app.use('/api/requests', orderRequestRouter);
 
+const addTestRouter = require('./src/routes/LabTestRoutes');
+app.use('/api/field', addTestRouter);
+
+
 //Routes for test category
 
 const testCategoryRouter = require('./src/routes/labTest/testCategoryRouter');
 app.use('/api/test-categories', testCategoryRouter);
+
+
+//Routes for labs
+
+const laboratoryRoute  = require('./src/routes/laboratory/laboratoryRoute');
+
+app.use('/api/labs',laboratoryRoute);
+
+
 
 //Routes for lab departments
 
@@ -53,6 +67,7 @@ app.use('/api/sample-centers', sampleCenterRouter);
 
 const testResultsRouter = require('./src/routes/testResultsRoutes');
 app.use('/api/test-results', testResultsRouter);
+
 
 app.listen(PORT, () => {
     console.log(`SERVER RUNNING ON PORT ${PORT}`);
