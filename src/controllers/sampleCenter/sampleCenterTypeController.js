@@ -10,18 +10,16 @@ const sampleCenterTypeController = function () {
     //Add new sample center type
 
 
-    this.addSampleCenterType = function (sampleCenterTypeInstance) {
+    this.addSampleCenterType = function (data) {
         return new Promise((resolve, reject) => {
-
-            const sampleCenterType = new sampleCenterTypeSchema({
-                name: sampleCenterTypeInstance.name
-            });
-
+            const sampleCenterType = new sampleCenterTypeSchema();
+            sampleCenterType.name = data.name;
             sampleCenterType.save().then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'New sample center type added '
+                    message: 'New sample center type added ',
+                    data: sampleCenterType
                 });
             }).catch(err => {
                 reject({
