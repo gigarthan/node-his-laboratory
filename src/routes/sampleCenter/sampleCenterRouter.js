@@ -45,7 +45,7 @@ router.get('/:name', (req, res) =>{
 
 router.post('/', (req, res) =>{
     sampleCenterController.addSampleCenter(req.body).then(data => {
-        res.status(data.status).send(data.message);
+        res.status(data.status).json(data);
     }).catch(function (err) {
         res.status(err.status).send(err.message);
     });
