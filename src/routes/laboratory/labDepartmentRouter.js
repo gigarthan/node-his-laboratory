@@ -21,7 +21,7 @@ router.get('/',  (req, res)=> {
 
 
 
-//Get single test category
+//Get single department
 
 
 
@@ -35,13 +35,13 @@ router.get('/:name', (req, res) =>{
 
 
 
-//Add new test category
+//Add new department
 
 
 
 router.post('/', (req, res) =>{
     labDepartmentController.addLabDepartment(req.body).then(data => {
-        res.status(data.status).send(data.message);
+        res.status(data.status).json(data);
     }).catch(function (err) {
         res.status(err.status).send(err.message);
     });
@@ -49,7 +49,7 @@ router.post('/', (req, res) =>{
 
 
 
-//delete test category
+//delete department
 
 
 
@@ -63,7 +63,7 @@ router.delete('/:name', (req, res) =>{
 
 
 
-//update test category
+//update departments
 
 
 
