@@ -115,7 +115,7 @@ var Controller = function () {
 
     this.updateTestField = function (testName, data) {
         return new Promise(function (resolve, reject) {
-            TestField.update({testName: testName}, data).exec().then(function () {
+            TestField.update({testName: testName}, data).then(function () {
                 resolve({status: 200, message: 'TestFields updated'});
             }).catch(function (reason) {
                 reject({status: 500, message: 'Cannot update test fields: '+reason});
