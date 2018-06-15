@@ -7,7 +7,7 @@ const cors = require('cors');
 
 require('./src/config/passport')(passport);
 
-const  Routes = require('./Routes');
+//const  Routes = require('./Routes');
 const app = express();
 
 
@@ -26,6 +26,8 @@ const orderRequestRouter = require('./src/routes/orderRequestRoutes');
 
 app.use('/api/requests', orderRequestRouter);
 
+const addTestRouter = require('./src/routes/LabTestRoutes');
+app.use('/api/field', addTestRouter);
 
 
 //Routes for test category
@@ -71,6 +73,7 @@ app.use('/api/sample-center-types',sampleCenterTypeRouter);
 const sampleCenterRouter  = require('./src/routes/sampleCenter/sampleCenterRouter');
 
 app.use('/api/sample-centers',sampleCenterRouter);
+
 
 
 
