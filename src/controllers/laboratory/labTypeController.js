@@ -1,9 +1,6 @@
 //IT16139640
 
-
 const labTypeSchema = require('../../models/laboratory/labType');
-
-
 
 const labTypeController = function () {
 
@@ -11,18 +8,17 @@ const labTypeController = function () {
     //Add new lab type
 
 
-    this.addLabType = function (labTypeInstance) {
+    this.addLabType = function (data) {
         return new Promise((resolve, reject) => {
 
-            const labType = new labTypeSchema({
-                name: labTypeInstance.name
-            });
-
+            const labType = new labTypeSchema();
+            labType.name= data.name;
             labType.save().then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'New lab type added '
+                    message: 'New lab type added ',
+                    data:labType
                 });
             }).catch(err => {
                 reject({
