@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const LabTestSchema = new Schema({
-    laboratary: {
+    laboratory: {
         type: String,
         //required: true
     },
