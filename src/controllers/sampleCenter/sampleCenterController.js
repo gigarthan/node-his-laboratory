@@ -28,6 +28,7 @@ const sampleCenterController = function () {
             sampleCenter.save().then(() => {
 
                 resolve({
+                    data:sampleCenter,
                     status: 200,
                     message: 'New sample center added '
                 });
