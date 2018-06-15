@@ -11,18 +11,17 @@ const labDepartmentController = function () {
     //Add new test sub category
 
 
-    this.addLabDepartment = function (labDepartmentInstance) {
+    this.addLabDepartment = function (data) {
         return new Promise((resolve, reject) => {
 
-            const labDepartment = new labDepartmentSchema({
-                name: labDepartmentInstance.name
-            });
-
+            const labDepartment = new labDepartmentSchema();
+            labDepartment.name= data.name;
             labDepartment.save().then(() => {
 
                 resolve({
                     status: 200,
-                    message: 'New lab department added '
+                    message: 'New lab department added ',
+                    data : labDepartment
                 });
             }).catch(err => {
                 reject({
