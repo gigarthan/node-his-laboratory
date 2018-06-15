@@ -1,6 +1,6 @@
-var express = require('express');
-var Route = express.Router();
-var controller = require('../controllers/orderRequestController');
+const express = require('express');
+const Route = express.Router();
+const controller = require('../controllers/orderRequestController');
 
 Route.post('/', (req, res) => {
     controller.createNewOrder(req.body).then(response => {
@@ -56,6 +56,5 @@ Route.put('/:reqId', (req, res) => {
                 res.status(err.status).json(err.message);
             });
 });
-
 
 module.exports = Route;
